@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CricFoot football</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <meta name="theme-color" content="#563d7c">
+
+    <!-- JQuery and other dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .highlight img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.2s ease;
+        }
+        .highlight img:hover {
+            transform: scale(1.05);
+        }
+        .highlight a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        .highlight a:hover {
+            text-decoration: underline;
+        }
+        .progress {
+            background-color: #ffffff;
+            margin-top: 5px;
+        }
+        .progress-bar {
+            background-color: #0099CC;
+        }
+        .bg-light {
+            background-color: #164d85 !important;
+        }
+        footer {
+            color: white;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Navigation Bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-light rounded">
+        <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Supercounters">CricFoot football</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/traffic/1665792">Cricket football</a></li>
+            <li class="nav-item"><a class="nav-link" href="/countries/1665792">Football football</a></li>
+            <li class="nav-item"><a class="nav-link" href="/system/1665792">Cricket Live</a></li>
+            <li class="nav-item"><a class="nav-link" href="/system/1665792">Football Live</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main role="main">
+        <div class="container my-5">
+          <div class="row" id="football"></div>
+        </div>
+
+        <!-- Dynamic football Script -->
+        <script>
+          const footballDiv = document.getElementById('football');
+
+          // Fetch JSON data and dynamically create content
+          fetch('football.json')
+            .then(response => response.json())
+            .then(data => {
+              data.forEach(item => {
+                const colDiv = document.createElement('div');
+                colDiv.className = 'col-12 col-sm-6 col-lg-4 mb-4'; // Responsive layout with margin-bottom
+                colDiv.innerHTML = `
+                  <div class="highlight text-center">
+                    <a href="${item.link}" target="_blank">
+                      <img src="${item.image}" alt="${item.title}">
+                    </a>
+                    <a href="${item.link}" target="_blank">${item.title}</a>
+                  </div>
+                `;
+                footballDiv.appendChild(colDiv);
+              });
+            })
+            .catch(error => console.error('Error fetching football:', error));
+        </script>
+      </main>
+
+      <!-- Advertisement Badge -->
+      <span class="badge badge-secondary">Advertisement</span>
+
+      <!-- Footer -->
+      <footer class="bg-light mt-auto py-3 rounded">
+        <div class="container">
+          <nav class="navbar navbar-expand-sm navbar-dark bg-light rounded">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/faq">FAQ</a></li>
+              <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="text-muted">
+            Copyright 2025 SuperCounters All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
